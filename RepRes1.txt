@@ -1,0 +1,565 @@
+
+R version 3.1.3 (2015-03-09) -- "Smooth Sidewalk"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[R.app GUI 1.65 (6913) x86_64-apple-darwin13.4.0]
+
+[Workspace restored from /Users/jakeforman/.RData]
+[History restored from /Users/jakeforman/.Rapp.history]
+
+> setwd()
+Error in setwd() : argument "dir" is missing, with no default
+> getwd()
+[1] "/Users/jakeforman"
+> setwd("/Users/jakeforman/Desktop/datasciencecoursera")
+[Workspace restored from /Users/jakeforman/Desktop/datasciencecoursera/.RData]
+
+> # Reproducible Research: Peer Assessment 1
+> 
+> 
+> ## Loading and preprocessing the data
+> >Show any code that is needed to
+Error: unexpected '>' in ">"
+>  1. Load the data (i.e. read.csv())
+Error: unexpected symbol in " 1. Load"
+>  2. Process/transform the data (if necessary) into a format suitable for your analysis
+Error: unexpected symbol in " 2. Process"
+> 
+> ```{r echo=TRUE}
+Error: attempt to use zero-length variable name
+> originalData <- read.csv("activity.csv")
+> ```
+Error: attempt to use zero-length variable name
+> 
+> A portion of the original dataset is as follows:
+Error: unexpected symbol in "A portion"
+> ```{r echo=FALSE}
+Error: attempt to use zero-length variable name
+> print(originalData[1:20,])
+   steps       date interval
+1     NA 2012-10-01        0
+2     NA 2012-10-01        5
+3     NA 2012-10-01       10
+4     NA 2012-10-01       15
+5     NA 2012-10-01       20
+6     NA 2012-10-01       25
+7     NA 2012-10-01       30
+8     NA 2012-10-01       35
+9     NA 2012-10-01       40
+10    NA 2012-10-01       45
+11    NA 2012-10-01       50
+12    NA 2012-10-01       55
+13    NA 2012-10-01      100
+14    NA 2012-10-01      105
+15    NA 2012-10-01      110
+16    NA 2012-10-01      115
+17    NA 2012-10-01      120
+18    NA 2012-10-01      125
+19    NA 2012-10-01      130
+20    NA 2012-10-01      135
+> ```
+Error: attempt to use zero-length variable name
+> 
+> ## What is mean total number of steps taken per day?
+> >For this part of the assignment, you can ignore the missing values in the dataset.
+Error: unexpected '>' in ">"
+>  1. Make a histogram of the total number of steps taken each day
+Error: unexpected symbol in " 1. Make"
+>  2. Calculate and report the mean and median total number of steps taken per day
+Error: unexpected symbol in " 2. Calculate"
+> 
+> The goal of this section is to generate the overall mean (average) of the total number of steps taken per day.
+Error: unexpected symbol in "The goal"
+> There are a few steps taken to reach this goal.
+Error: unexpected symbol in "There are"
+> 
+> 1. A dataset containing the total number of steps taken each day is created.
+Error: unexpected symbol in "1. A"
+> 
+>   ```{r echo=TRUE}
+Error: attempt to use zero-length variable name
+>   dailyStepSum <- aggregate(originalData$steps, list(originalData$date), sum)
+>   ```
+Error: attempt to use zero-length variable name
+>    A portion of the new dataset is as follows:
+Error: unexpected symbol in "   A portion"
+>   ```{r echo=FALSE}
+Error: attempt to use zero-length variable name
+>   colnames(dailyStepSum) <- c("Date", "Steps")
+>   print(dailyStepSum[1:20,])
+         Date Steps
+1  2012-10-01    NA
+2  2012-10-02   126
+3  2012-10-03 11352
+4  2012-10-04 12116
+5  2012-10-05 13294
+6  2012-10-06 15420
+7  2012-10-07 11015
+8  2012-10-08    NA
+9  2012-10-09 12811
+10 2012-10-10  9900
+11 2012-10-11 10304
+12 2012-10-12 17382
+13 2012-10-13 12426
+14 2012-10-14 15098
+15 2012-10-15 10139
+16 2012-10-16 15084
+17 2012-10-17 13452
+18 2012-10-18 10056
+19 2012-10-19 11829
+20 2012-10-20 10395
+>   ```
+Error: attempt to use zero-length variable name
+> 
+> 2. A histogram of the above data is created as a form of visual representation.
+Error: unexpected symbol in "2. A"
+> 
+>   ```{r fig.width=15, echo=TRUE, tidy=FALSE}
+Error: attempt to use zero-length variable name
+>   with(dailyStepSum, {
++       par(oma=c(2,0,0,0), mar=c(6.75,6.75,3,0), mgp=c(5.75,0.75,0), las=2)
++       barplot(
++         height=Steps,
++         main="Graph of Total Steps taken per Day",
++         xlab="Dates",
++         ylab="Steps per Day",
++         names.arg=Date,
++         space=c(0)
++       )
++   })
+>   ```
+Error: attempt to use zero-length variable name
+> 
+> 3. Calculate the mean and median values (ignoring NA values) using the above dataset.
+Error: unexpected symbol in "3. Calculate"
+> 
+>   1. Mean
+Error: unexpected symbol in "  1. Mean"
+>       ```{r echo=TRUE}
+Error: attempt to use zero-length variable name
+>       dailyStepMean <- mean(dailyStepSum$Steps, na.rm=TRUE)
+>       ```
+Error: attempt to use zero-length variable name
+>       ```{r echo=FALSE}
+Error: attempt to use zero-length variable name
+>       print(dailyStepMean)
+[1] 10766.19
+>       ```
+Error: attempt to use zero-length variable name
+>   2. Median
+Error: unexpected symbol in "  2. Median"
+>       ```{r echo=TRUE}
+Error: attempt to use zero-length variable name
+>       dailyStepMedian <- median(dailyStepSum$Steps, na.rm=TRUE)
+>       ```
+Error: attempt to use zero-length variable name
+>       ```{r echo=FALSE}
+Error: attempt to use zero-length variable name
+>       print(dailyStepMedian)
+[1] 10765
+>       ```
+Error: attempt to use zero-length variable name
+> 
+> ## What is the average daily activity pattern?
+> >What is the average daily activity pattern?
+Error: unexpected '>' in ">"
+>  1. Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
+Error: unexpected symbol in " 1. Make"
+>  2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
+Error: unexpected symbol in " 2. Which"
+> 
+> This goal of this section is to find the mean (average) steps taken for eatch 5-minute time interval averaged over all the days in the data.
+Error: unexpected symbol in "This goal"
+> Similar to the previous section, the steps taken to reach the above goal are as follows:
+Error: unexpected symbol in "Similar to"
+> 
+> 1. Generate the mean (average) number of steps taken (ignoring NA values) for each 5-minute interval, itself averaged across all days.
+Error: unexpected symbol in "1. Generate"
+>   
+>   ```{r echo=TRUE, tidy=FALSE}
+Error: attempt to use zero-length variable name
+>   intervalSteps <- aggregate(
++       data=originalData,
++       steps~interval,
++       FUN=mean,
++       na.action=na.omit
++   )
+>   colnames(intervalSteps) <- c("Interval", "AvgStepsAvgAcrossDay")
+>   ```
+Error: attempt to use zero-length variable name
+>    A portion of the new dataset is as follows:
+Error: unexpected symbol in "   A portion"
+>   ```{r echo=FALSE}
+Error: attempt to use zero-length variable name
+>   print(intervalSteps[1:20,])
+   Interval AvgStepsAvgAcrossDay
+1         0            1.7169811
+2         5            0.3396226
+3        10            0.1320755
+4        15            0.1509434
+5        20            0.0754717
+6        25            2.0943396
+7        30            0.5283019
+8        35            0.8679245
+9        40            0.0000000
+10       45            1.4716981
+11       50            0.3018868
+12       55            0.1320755
+13      100            0.3207547
+14      105            0.6792453
+15      110            0.1509434
+16      115            0.3396226
+17      120            0.0000000
+18      125            1.1132075
+19      130            1.8301887
+20      135            0.1698113
+>   ```
+Error: attempt to use zero-length variable name
+>   
+> 2. A Time-Series plot is created from the above dataset
+Error: unexpected symbol in "2. A"
+> 
+>   ```{r fig.width=15, echo=TRUE, tidy=FALSE}
+Error: attempt to use zero-length variable name
+>   with(intervalSteps, {
++       plot(
++         x=Interval,
++         y=AvgStepsAvgAcrossDay,
++         type="l",
++         main="Time-Series of Average Steps against Interval",
++         xlab="5-minute Interval",
++         ylab="Average Steps, Average across all Days"
++         
++       )
++   })
+>   ```
+Error: attempt to use zero-length variable name
+>   
+> 3. Finding the 5-minute interval with the maximum number of steps
+Error: unexpected symbol in "3. Finding"
+> 
+>   ```{r echo=TRUE, tidy=FALSE}
+Error: attempt to use zero-length variable name
+>   intervalMax <- intervalSteps[intervalSteps$AvgStepsAvgAcrossDay==max(intervalSteps$AvgStepsAvgAcrossDay),]
+>   ```
+Error: attempt to use zero-length variable name
+>   ```{r echo=FALSE}
+Error: attempt to use zero-length variable name
+>   print(intervalMax)
+    Interval AvgStepsAvgAcrossDay
+104      835             206.1698
+>   ```
+Error: attempt to use zero-length variable name
+>   Therefore, the interval between **`r as.character(intervalMax[1])`** and  **`r as.character(as.numeric(intervalMax[1])+5)`** minutes has the maximum number of steps.
+Error: unexpected ',' in "  Therefore,"
+> 
+> 
+> ## Imputing missing values
+> >Note that there are a number of days/intervals where there are missing values (coded as NA). The presence of missing days may introduce bias into some calculations or summaries of the data.
+Error: unexpected '>' in ">"
+>  1. Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)
+Error: unexpected symbol in " 1. Calculate"
+>  2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
+Error: unexpected symbol in " 2. Devise"
+>  3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
+Error: unexpected symbol in " 3. Create"
+>  4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
+Error: unexpected symbol in " 4. Make"
+> 
+> The goal of this section is to generate a new graph using the same data as from the first section but with its NA values replaced.
+Error: unexpected symbol in "The goal"
+> 
+> To achieve this goal the mean (average) 5-minunte interval values as from the previous section will be used to replace the NA values.
+Error: unexpected symbol in "To achieve"
+> 
+> 1. Total number of rows with NA values in original data.
+Error: unexpected symbol in "1. Total"
+> 
+>   ```{r echo=TRUE}
+Error: attempt to use zero-length variable name
+>   countNA <- nrow(subset(originalData, is.na(originalData$steps)))
+>   ```
+Error: attempt to use zero-length variable name
+>   ```{r echo=FALSE}
+Error: attempt to use zero-length variable name
+>   print(countNA)
+[1] 2304
+>   ```
+Error: attempt to use zero-length variable name
+> 
+> 2. The average 5-minute interval values from the prevous section is used to replace the NA values of the original data and a new dataset will be generated from the latter.
+Error: unexpected symbol in "2. The"
+> 
+>  Decimal values will be rounded up to a whole number.
+Error: unexpected symbol in " Decimal values"
+>  
+>   ```{r echo=TRUE, tidy=FALSE}
+Error: attempt to use zero-length variable name
+>   stepValues <- data.frame(originalData$steps)
+>   stepValues[is.na(stepValues),] <- ceiling(tapply(X=originalData$steps,INDEX=originalData$interval,FUN=mean,na.rm=TRUE))
+>   newData <- cbind(stepValues, originalData[,2:3])
+>   colnames(newData) <- c("Steps", "Date", "Interval")
+>   ```
+Error: attempt to use zero-length variable name
+>   
+>   A portion of the new dataset is as follows:
+Error: unexpected symbol in "  A portion"
+>   ```{r echo=FALSE}
+Error: attempt to use zero-length variable name
+>   print(newData[1:20,])
+   Steps       Date Interval
+1      2 2012-10-01        0
+2      1 2012-10-01        5
+3      1 2012-10-01       10
+4      1 2012-10-01       15
+5      1 2012-10-01       20
+6      3 2012-10-01       25
+7      1 2012-10-01       30
+8      1 2012-10-01       35
+9      0 2012-10-01       40
+10     2 2012-10-01       45
+11     1 2012-10-01       50
+12     1 2012-10-01       55
+13     1 2012-10-01      100
+14     1 2012-10-01      105
+15     1 2012-10-01      110
+16     1 2012-10-01      115
+17     0 2012-10-01      120
+18     2 2012-10-01      125
+19     2 2012-10-01      130
+20     1 2012-10-01      135
+>   ```
+Error: attempt to use zero-length variable name
+> 
+> 3. The total number of steps taken each day is generated using this new dataset.
+Error: unexpected symbol in "3. The"
+> 
+>   ```{r echo=TRUE}
+Error: attempt to use zero-length variable name
+>   newDailyStepSum <- aggregate(newData$Steps, list(newData$Date), sum)
+>   ```
+Error: attempt to use zero-length variable name
+>    A portion of the new dataset is as follows:
+Error: unexpected symbol in "   A portion"
+>   ```{r echo=FALSE}
+Error: attempt to use zero-length variable name
+>   colnames(newDailyStepSum) <- c("Date", "Steps")
+>   print(newDailyStepSum[1:20,])
+         Date Steps
+1  2012-10-01 10909
+2  2012-10-02   126
+3  2012-10-03 11352
+4  2012-10-04 12116
+5  2012-10-05 13294
+6  2012-10-06 15420
+7  2012-10-07 11015
+8  2012-10-08 10909
+9  2012-10-09 12811
+10 2012-10-10  9900
+11 2012-10-11 10304
+12 2012-10-12 17382
+13 2012-10-13 12426
+14 2012-10-14 15098
+15 2012-10-15 10139
+16 2012-10-16 15084
+17 2012-10-17 13452
+18 2012-10-18 10056
+19 2012-10-19 11829
+20 2012-10-20 10395
+>   ```
+Error: attempt to use zero-length variable name
+> 
+> 4. A histogram of the above data is created as a form of visual representation.
+Error: unexpected symbol in "4. A"
+> 
+>   ```{r fig.width=15, echo=TRUE, tidy=FALSE}
+Error: attempt to use zero-length variable name
+>   with(newDailyStepSum, {
++       par(oma=c(2,0,0,0), mar=c(6.75,6.75,3,0), mgp=c(5.75,0.75,0), las=2)
++       barplot(
++         height=Steps,
++         main="Graph of Total Steps taken per Day",
++         xlab="Dates",
++         ylab="Steps per Day",
++         names.arg=Date,
++         space=c(0)
++       )
++   })
+>   ```
+Error: attempt to use zero-length variable name
+> 
+> 5. Calculate the mean and median values of this new dataset (NA values replaced with mean).
+Error: unexpected symbol in "5. Calculate"
+> 
+>   1. Mean
+Error: unexpected symbol in "  1. Mean"
+>       ```{r echo=TRUE}
+Error: attempt to use zero-length variable name
+>       newDailyStepMean <- mean(newDailyStepSum$Steps)
+>       ```
+Error: attempt to use zero-length variable name
+>       ```{r echo=FALSE}
+Error: attempt to use zero-length variable name
+>       print(newDailyStepMean)
+[1] 10784.92
+>       ```
+Error: attempt to use zero-length variable name
+>   2. Median
+Error: unexpected symbol in "  2. Median"
+>       ```{r echo=TRUE}
+Error: attempt to use zero-length variable name
+>       newDailyStepMedian <- median(newDailyStepSum$Steps)
+>       ```
+Error: attempt to use zero-length variable name
+>       ```{r echo=FALSE}
+Error: attempt to use zero-length variable name
+>       print(newDailyStepMedian)
+[1] 10909
+>       ```
+Error: attempt to use zero-length variable name
+>       
+> 6. It seems that adding the missing values to the original data has caused both the mean and median values to increase.
+Error: unexpected symbol in "6. It"
+> 
+>   1. Mean:
+Error: unexpected symbol in "  1. Mean"
+>   
+>       `r as.character(floor(as.numeric(dailyStepMean)))` to `r as.character(floor(as.numeric(newDailyStepMean)))`
+Error: unexpected symbol in "      `r as.character(floor(as.numeric(dailyStepMean)))` to"
+>   2. Median:
+Error: unexpected symbol in "  2. Median"
+>   
+>       `r as.character(floor(as.numeric(dailyStepMedian)))` to `r as.character(floor(as.numeric(newDailyStepMedian)))`
+Error: unexpected symbol in "      `r as.character(floor(as.numeric(dailyStepMedian)))` to"
+> 
+> 
+> ## Are there differences in activity patterns between weekdays and weekends?
+> >For this part the weekdays() function may be of some help here. Use the dataset with the filled-in missing values for this part.
+Error: unexpected '>' in ">"
+>  1. Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
+Error: unexpected symbol in " 1. Create"
+>  2. Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). The plot should look something like the following, which was creating using simulated data:
+Error: unexpected symbol in " 2. Make"
+> 
+> 1.  A new column indicating whether the date is a weekday or a weekend is added to the new dataset created in the previous section.
+Error: unexpected symbol in "1.  A"
+> 
+>   ```{r echo=TRUE}
+Error: attempt to use zero-length variable name
+>   dateDayType <- data.frame(sapply(X=newData$Date, FUN=function(day) {
++     if (weekdays(as.Date(day)) %in% c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")) {
++       day <- "weekday"
++     }
++     else {
++       day <- "weekend"
++     } 
++   }))
+>   
+>   newDataWithDayType <- cbind(newData, dateDayType)
+>   
+>   colnames(newDataWithDayType) <- c("Steps", "Date", "Interval", "DayType")
+>   ```
+Error: attempt to use zero-length variable name
+>   
+>    A portion of this dataset is as follows:
+Error: unexpected symbol in "   A portion"
+>   ```{r echo=FALSE}
+Error: attempt to use zero-length variable name
+>   print(newDataWithDayType[1:20,])
+   Steps       Date Interval DayType
+1      2 2012-10-01        0 weekday
+2      1 2012-10-01        5 weekday
+3      1 2012-10-01       10 weekday
+4      1 2012-10-01       15 weekday
+5      1 2012-10-01       20 weekday
+6      3 2012-10-01       25 weekday
+7      1 2012-10-01       30 weekday
+8      1 2012-10-01       35 weekday
+9      0 2012-10-01       40 weekday
+10     2 2012-10-01       45 weekday
+11     1 2012-10-01       50 weekday
+12     1 2012-10-01       55 weekday
+13     1 2012-10-01      100 weekday
+14     1 2012-10-01      105 weekday
+15     1 2012-10-01      110 weekday
+16     1 2012-10-01      115 weekday
+17     0 2012-10-01      120 weekday
+18     2 2012-10-01      125 weekday
+19     2 2012-10-01      130 weekday
+20     1 2012-10-01      135 weekday
+>   ```
+Error: attempt to use zero-length variable name
+> 2. The data is then separated into weekday or weekend and the mean (average) number of steps taken for each 5-minute interval, itself averaged across all weekday days or weekend days is calculated.
+Error: unexpected symbol in "2. The"
+> 
+>   ```{r echo=TRUE, tidy=FALSE}
+Error: attempt to use zero-length variable name
+>   dayTypeIntervalSteps <- aggregate(
++       data=newDataWithDayType,
++       Steps ~ DayType + Interval,
++       FUN=mean
++   )
+>   ```  
+Error: attempt to use zero-length variable name
+>    A portion of the dataset is as follows:
+Error: unexpected symbol in "   A portion"
+>   ```{r echo=FALSE}
+Error: attempt to use zero-length variable name
+>   print(dayTypeIntervalSteps[1:20,])
+   DayType Interval     Steps
+1  weekday        0 2.2888889
+2  weekend        0 0.2500000
+3  weekday        5 0.5333333
+4  weekend        5 0.1250000
+5  weekday       10 0.2888889
+6  weekend       10 0.1250000
+7  weekday       15 0.3111111
+8  weekend       15 0.1250000
+9  weekday       20 0.2222222
+10 weekend       20 0.1250000
+11 weekday       25 1.7111111
+12 weekend       25 3.6250000
+13 weekday       30 0.7555556
+14 weekend       30 0.1250000
+15 weekday       35 1.1555556
+16 weekend       35 0.1250000
+17 weekday       40 0.0000000
+18 weekend       40 0.0000000
+19 weekday       45 1.8666667
+20 weekend       45 0.6250000
+>   ```
+Error: attempt to use zero-length variable name
+> 
+> 3. Finally, a panel plot of both weekend and weekday graphs is generated.
+Error: unexpected symbol in "3. Finally"
+> 
+>   ```{r fig.width=15, echo=TRUE, tidy=FALSE}
+Error: attempt to use zero-length variable name
+>   library("lattice")
+>   
+>   xyplot(
++       type="l",
++       data=dayTypeIntervalSteps,
++       Steps ~ Interval | DayType,
++       xlab="Interval",
++       ylab="Number of steps",
++       layout=c(1,2)
++   )
+>   ```
+Error: attempt to use zero-length variable name
+> 
