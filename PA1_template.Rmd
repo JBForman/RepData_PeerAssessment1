@@ -44,7 +44,7 @@ ggplot(avgActbyInterval,aes(x=interval,y=steps,group=0)) +
     labs(title="Avg # of steps by interval",x="Daily interval",y="Avg # of steps") + 
     theme_bw()
     
-    5. The 5-minute interval that, on average, contains the maximun number of steps
+ 5. The 5-minute interval that, on average, contains the maximun number of steps
 
 The maximun number of steps
 
